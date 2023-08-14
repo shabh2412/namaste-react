@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Namaste React Episode 1 Part 2</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script>
+    // step 1: create element.
+    const heading = React.createElement("h1", {}, "Hello World from React.JS");
+    // step 2: link the ReactDOM with root
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    // step 3: render element in root react dom
+    root.render(heading)
+  </script>
+</body>
+
+</html>
