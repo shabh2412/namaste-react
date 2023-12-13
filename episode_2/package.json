@@ -2,7 +2,6 @@
   "name": "namaste_js_episode_2",
   "version": "1.0.0",
   "description": "namaste javascript ep 2 class work",
-  "main": "App.js",
   "scripts": {
     "test": "jest"
   },
