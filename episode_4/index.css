@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Variables */
+
+:root {
+  --primary-color: #ffa500;
+  --secondary-color: #ff7f50;
+  --neutral-dark: #333333;
+  --neutral-light: #fff8dc;
+  --accent-color: #008080;
+  --light-gray: #f0f0f0;
+}
+
+* {
+  font-family: "Roboto", sans-serif !important;
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+  padding: 5px 20px;
+  align-items: center;
+  background-color: var(--neutral-light);
+}
+
+.logo {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.nav-items > ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+
+.res-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 25px 5px;
+  /* display: flex;
+  flex-wrap: wrap;
+  gap: 10px; */
+  margin: auto 10px;
+  /* justify-content: start; */
+}
+
+.res-card {
+  width: 200px;
+  /* height: 320px; */
+  /* padding: 5px; */
+  border-radius: 8px;
+  transition: all ease-in-out 0.5s;
+  /* margin: 10px auto; */
+}
+
+.res-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
+
+.search {
+  padding: 10px;
+}
+
+.res-logo-container {
+  width: 100%;
+}
+
+.res-logo {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.res-details-container {
+  padding: 5px;
+}
+
+.res-card > .res-details-container > h4 {
+  margin: 10px auto;
+  /* line-height: 24px; */
+  font-weight: 450;
+}
+
+.res-card > .res-details-container > .cuisines {
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+}
+
+.star-and-delivery {
+  display: flex;
+  gap: 5px;
+}
+
+.star-and-delivery > div > h4 {
+  margin: 5px 0;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* filter button */
+.filter-btn {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+
+.filter-btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.body > div {
+  /* margin-top: 16px;
+  margin-bottom: 16px; */
+  margin: 16px;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.items-center {
+  align-items: center;
+}
