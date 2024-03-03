@@ -34,6 +34,7 @@ const RestaurantCard = (props) => {
           </div>
         </div>
         <h4 className="cuisines">{cuisines?.join(", ")}</h4>
+        <p className="costForTwo">{costForTwo}</p>
       </div>
     </div>
   );

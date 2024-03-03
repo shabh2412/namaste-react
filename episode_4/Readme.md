@@ -13,3 +13,9 @@
 - - Links
 - - Address
 - - Contact
+
+<!--
+Monolith architecture
+ - earlier all projects used to have monolithic architecture
+ - UI code, API, Authentication, DB connectivity, notifications & SMS.
+ -->

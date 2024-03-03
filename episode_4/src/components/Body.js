@@ -1,38 +1,51 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { res_list } from "../utils/mockData";
+import { initial_lat_long, res_list } from "../utils/mockData";
 
 const Body = () => {
 
-  const [list_of_restaurants, set_list_of_restaurants] = useState(res_list);
+  const [list_of_restaurants, set_list_of_restaurants] = useState([]);
 
   const [minimum_rating, set_minimum_rating] = useState(4);
 
-  const [count, set_count] = useState(0);
+  const [loading, set_loading] = useState(false);
+
+  const fetch_data = async ({ lat, long } = initial_lat_long) => {
+    try {
+      set_loading(true);
+      const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
+      const res = await fetch(url);
+      const json_data = await res?.json();
+      console.log(json_data);
+      set_list_of_restaurants(json_data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json_data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+    } catch (error) {
+      console.log({ error });
+    } finally {
+      set_loading(false);
+    }
+  };
 
   useEffect(() => {
-    set_count(count + 1);
-    set_count(count + 1);
-    set_count(count + 1);
+    if (!navigator?.geolocation) {
+      console.log("geolocation is not supported.");
+    } else {
+      set_loading(true);
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { coords: { latitude, longitude } } = position;
+        fetch_data({ lat: latitude, long: longitude });
+      }, () => {
+        fetch_data();
+      }, {
+        enableHighAccuracy: false,
+        timeout: 5000,
+        maximumAge: Infinity
+      }
+      );
+    }
   }, []);
-
-  useEffect(() => {
-    console.log(`count changed: ${count}`);
-  }, [count]);
-
-  useEffect(() => {
-    set_count(count + 1);
-    set_count(count + 1);
-    set_count(count + 1);
-  }, []);
-
-  useEffect(() => {
-    console.log(`count changed: ${count}`);
-  }, [count]);
 
   return (
     <div className="body">
-      {count}
       <div className="filter">
         {/* <button
           className="filter-btn"
@@ -69,11 +82,15 @@ const Body = () => {
       <div className="res-container">
         {/* Restaurant Cards */}
         {/* <RestaurantCard resData={resObj} /> */}
+        {/* Below is an example of conditional rendering */}
         {
-          list_of_restaurants?.map((restaurant) => <RestaurantCard
-            key={`${restaurant?.info?.id}`}
-            resData={restaurant?.info}
-          />)
+          loading ? (new Array(9))?.fill(0)?.map((item, idx) => <div key={`Shimmer-${idx}-loading`} className="shimmer-card" >
+            <div style={{ width: "100%", height: "100%" }} className="shimmer-effect"></div>
+          </div>) :
+            list_of_restaurants?.map((restaurant) => <RestaurantCard
+              key={`${restaurant?.info?.id}`}
+              resData={restaurant?.info}
+            />)
         }
       </div>
     </div>

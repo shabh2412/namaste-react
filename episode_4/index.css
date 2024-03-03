@@ -51,6 +51,7 @@ body {
   flex-wrap: wrap;
   gap: 10px; */
   margin: auto 10px;
+  transition: all ease-in-out 0.5s;
   /* justify-content: start; */
 }
 
@@ -61,11 +62,13 @@ body {
   border-radius: 8px;
   transition: all ease-in-out 0.5s;
   /* margin: 10px auto; */
+  border: 0.25px solid #f0f0f0;
 }
 
 .res-card:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
   cursor: pointer;
+  transform: scale(0.95);
 }
 
 .search {
@@ -78,6 +81,7 @@ body {
 
 .res-logo {
   width: 100%;
+  min-height: 150px;
   max-height: 150px;
   object-fit: cover;
   border-top-left-radius: 8px;
@@ -98,6 +102,18 @@ body {
   font-weight: 300;
   font-size: 14px;
   letter-spacing: -0.3px;
+  max-width: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  padding-right: 30px;
+}
+
+.res-card > .res-details-container > .costForTwo {
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.3px;
+  color: #6f6f6f;
 }
 
 .star-and-delivery {
@@ -151,4 +167,31 @@ body {
 
 .items-center {
   align-items: center;
+}
+
+.shimmer-card {
+  background-color: #f0f0f0;
+  height: 284px;
+  width: 200px;
+  border-radius: 8px;
+  transition: all ease-in-out 0.5s;
+}
+
+.shimmer-effect {
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(200%);
+  }
 }

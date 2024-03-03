@@ -821,3 +821,8 @@ export const res_list = [
     "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
   }
 ];
+
+export const initial_lat_long = {
+  lat: 12.9351929,
+  long: 77.62448069999999,
+};
