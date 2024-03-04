@@ -4,9 +4,9 @@ const RestaurantCard = (props) => {
   // console.log(props);
 
   const { resData } = props;
-  console.log(resData);
+  // console.log(resData);
 
-  const { name, cloudinaryImageId, costForTwo, cuisines, sla, avgRating } = resData;
+  const { name, cloudinaryImageId, costForTwo, cuisines, sla, avgRating, areaName } = resData;
 
   return (
     <div className="res-card" style={{
@@ -34,7 +34,10 @@ const RestaurantCard = (props) => {
           </div>
         </div>
         <h4 className="cuisines">{cuisines?.join(", ")}</h4>
-        <p className="costForTwo">{costForTwo}</p>
+        <div className="otherDetails flex justify-between items-center">
+          {costForTwo && <p className="costForTwo">• {costForTwo}</p>}
+          {areaName && <div className="areaName">• {areaName}</div>}
+        </div>
       </div>
     </div>
   );
