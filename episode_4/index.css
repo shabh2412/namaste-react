@@ -122,7 +122,7 @@ button:hover {
   padding-right: 30px;
 }
 
-.res-card > .res-details-container > .costForTwo {
+.res-card > .res-details-container .costForTwo {
   font-weight: 400;
   font-size: 14px;
   letter-spacing: -0.3px;
