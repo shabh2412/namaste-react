@@ -43,6 +43,19 @@ body {
   margin: 10px;
 }
 
+button {
+  border: none;
+  transition: 0.2s all ease-in-out;
+  color: white;
+  background-color: var(--neutral-dark);
+}
+button:hover {
+  transition: 0.2s all ease-in-out;
+  cursor: pointer;
+  background-color: black;
+  color: var(--primary-color);
+}
+
 .res-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
