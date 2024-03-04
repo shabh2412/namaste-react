@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { initial_lat_long, res_list } from "../utils/mockData";
 
 const Body = () => {
+
+  const base_url = `https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants`;
 
   const [list_of_restaurants, set_list_of_restaurants] = useState([]);
 
@@ -13,7 +15,7 @@ const Body = () => {
   const fetch_data = async ({ lat, long } = initial_lat_long) => {
     try {
       set_loading(true);
-      const url = `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
+      const url = `${base_url}/list/v5?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
       const res = await fetch(url);
       const json_data = await res?.json();
       console.log(json_data);
@@ -25,6 +27,8 @@ const Body = () => {
     }
   };
 
+  const [current_lat_long, set_current_lat_long] = useState(initial_lat_long);
+
   useEffect(() => {
     if (!navigator?.geolocation) {
       console.log("geolocation is not supported.");
@@ -32,6 +36,10 @@ const Body = () => {
       set_loading(true);
       navigator.geolocation.getCurrentPosition((position) => {
         const { coords: { latitude, longitude } } = position;
+        set_current_lat_long({
+          lat: latitude,
+          long: longitude,
+        });
         fetch_data({ lat: latitude, long: longitude });
       }, () => {
         fetch_data();
@@ -43,6 +51,51 @@ const Body = () => {
       );
     }
   }, []);
+
+  const [search_text, set_search_text] = useState("");
+
+  const handle_search_text_change = (e) => {
+    set_search_text(e?.target?.value);
+    if (e?.target?.value === "") {
+      fetch_data();
+    }
+  };
+
+  const timeout = useRef(null);
+
+  const debounce = (func, delay) => {
+    if (timeout?.current) {
+      clearTimeout(timeout?.current);
+    }
+    timeout.current = setTimeout(func, delay);
+  };
+
+  const search_restaurants = async () => {
+    try {
+      let filteredList = [];
+      // if (search_text !== "") {
+      //   filteredList = list_of_restaurants?.filter(restaurant => restaurant?.info?.name?.toLowerCase()?.includes(search_text?.toLowerCase()));
+      // }
+      console.log('searching in server');
+      const res = await fetch(`${base_url}/search/suggest?lat=${current_lat_long?.lat}&lng=${current_lat_long?.long}&str=${search_text}&trackingId=undefined`);
+      const json_data = await res?.json();
+      console.log(json_data);
+      const { data } = json_data;
+      const { suggestions } = data;
+      console.log({ suggestions });
+      filteredList?.push(...suggestions?.filter(suggestion => suggestion?.type === "RESTAURANT")?.map(item => ({
+        ...item,
+        info: {
+          ...item,
+          name: item?.text
+        }
+      })));
+      console.log({ filteredList });
+      set_list_of_restaurants(filteredList);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="body">
@@ -58,6 +111,18 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button> */}
+        <div className="searchBar flex">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search for restaurants and food"
+            value={search_text}
+            onChange={handle_search_text_change}
+          />
+          <button onClick={search_restaurants}
+          >Search</button>
+        </div>
         <div className="flex gap-1 items-center">
           <label htmlFor="minRating">Minimum Rating</label>
           <select name="minRating" id="minRating" value={minimum_rating} onChange={(e) => {
