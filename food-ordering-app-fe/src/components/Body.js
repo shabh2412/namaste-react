@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { initial_lat_long, res_list } from "../utils/mockData";
+import Search from "./Search";
+import { base_url } from "../utils/constants";
 
 const Body = () => {
 
-  const base_url = `https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants`;
-
   const [list_of_restaurants, set_list_of_restaurants] = useState([]);
+  const [filtered_restaurants, set_filtered_restaurants] = useState([]);
 
   const [minimum_rating, set_minimum_rating] = useState(4);
 
@@ -20,6 +21,7 @@ const Body = () => {
       const json_data = await res?.json();
       console.log(json_data);
       set_list_of_restaurants(json_data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json_data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+      set_filtered_restaurants(json_data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json_data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
     } catch (error) {
       console.log({ error });
     } finally {
@@ -52,15 +54,6 @@ const Body = () => {
     }
   }, []);
 
-  const [search_text, set_search_text] = useState("");
-
-  const handle_search_text_change = (e) => {
-    set_search_text(e?.target?.value);
-    if (e?.target?.value === "") {
-      fetch_data();
-    }
-  };
-
   const timeout = useRef(null);
 
   const debounce = (func, delay) => {
@@ -68,33 +61,6 @@ const Body = () => {
       clearTimeout(timeout?.current);
     }
     timeout.current = setTimeout(func, delay);
-  };
-
-  const search_restaurants = async () => {
-    try {
-      let filteredList = [];
-      // if (search_text !== "") {
-      //   filteredList = list_of_restaurants?.filter(restaurant => restaurant?.info?.name?.toLowerCase()?.includes(search_text?.toLowerCase()));
-      // }
-      console.log('searching in server');
-      const res = await fetch(`${base_url}/search/suggest?lat=${current_lat_long?.lat}&lng=${current_lat_long?.long}&str=${search_text}&trackingId=undefined`);
-      const json_data = await res?.json();
-      console.log(json_data);
-      const { data } = json_data;
-      const { suggestions } = data;
-      console.log({ suggestions });
-      filteredList?.push(...suggestions?.filter(suggestion => suggestion?.type === "RESTAURANT")?.map(item => ({
-        ...item,
-        info: {
-          ...item,
-          name: item?.text
-        }
-      })));
-      console.log({ filteredList });
-      set_list_of_restaurants(filteredList);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   return (
@@ -111,18 +77,11 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button> */}
-        <div className="searchBar flex">
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search for restaurants and food"
-            value={search_text}
-            onChange={handle_search_text_change}
-          />
-          <button onClick={search_restaurants}
-          >Search</button>
-        </div>
+        <Search
+          current_lat_long={current_lat_long}
+          set_filtered_restaurants={set_filtered_restaurants}
+          list_of_restaurants={list_of_restaurants}
+        />
         <div className="flex gap-1 items-center">
           <label htmlFor="minRating">Minimum Rating</label>
           <select name="minRating" id="minRating" value={minimum_rating} onChange={(e) => {
@@ -152,7 +111,7 @@ const Body = () => {
           loading ? (new Array(9))?.fill(0)?.map((item, idx) => <div key={`Shimmer-${idx}-loading`} className="shimmer-card" >
             <div style={{ width: "100%", height: "100%" }} className="shimmer-effect"></div>
           </div>) :
-            list_of_restaurants?.map((restaurant) => <RestaurantCard
+            filtered_restaurants?.map((restaurant) => <RestaurantCard
               key={`${restaurant?.info?.id}`}
               resData={restaurant?.info}
             />)

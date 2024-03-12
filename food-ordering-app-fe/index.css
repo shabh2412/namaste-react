@@ -73,7 +73,7 @@ button:hover {
   /* height: 320px; */
   /* padding: 5px; */
   border-radius: 8px;
-  transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.1s;
   /* margin: 10px auto; */
   border: 0.25px solid #f0f0f0;
 }
@@ -122,11 +122,16 @@ button:hover {
   padding-right: 30px;
 }
 
-.res-card > .res-details-container .costForTwo {
+.res-card > .res-details-container .costForTwo,
+.res-card > .res-details-container .areaName {
   font-weight: 400;
   font-size: 14px;
   letter-spacing: -0.3px;
   color: #6f6f6f;
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
 }
 
 .star-and-delivery {
@@ -187,7 +192,7 @@ button:hover {
   height: 284px;
   width: 200px;
   border-radius: 8px;
-  transition: all ease-in-out 0.5s;
+  transition: all ease-in-out 0.1s;
 }
 
 .shimmer-effect {
@@ -220,7 +225,8 @@ button:hover {
   font-size: 16px;
   padding: 10px;
   border: none;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .searchBar > button {
@@ -229,6 +235,11 @@ button:hover {
   border: none;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+.searchBar > button:disabled {
+  background-color: var(--light-gray);
+  color: var(--neutral-dark);
+  cursor: default;
 }
 
 .justify-center {
@@ -255,4 +266,57 @@ button:hover {
   font-size: 14px;
   letter-spacing: -0.3px;
   color: #6f6f6f;
+}
+
+.search-result-img {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 60px;
+  min-height: 60px;
+  object-fit: cover;
+}
+
+.search-result-individual-box {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  align-items: center;
+  /* padding: 4px; */
+  background-color: var(--light-gray);
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.5s all ease-in-out;
+}
+
+.search-result-individual-box:hover {
+  background-color: var(--neutral-dark);
+  transition: 0.5s all ease-in-out;
+  color: white !important;
+}
+
+.search-main-parent {
+  position: relative;
+}
+
+.search-result-container {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  z-index: 100;
+  max-height: 250px;
+  overflow-y: scroll;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.clear-search-result {
+  margin: 0;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: 5s all ease-in-out;
 }

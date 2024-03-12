@@ -34,7 +34,7 @@ const RestaurantCard = (props) => {
           </div>
         </div>
         <h4 className="cuisines">{cuisines?.join(", ")}</h4>
-        <div className="otherDetails flex justify-between items-center">
+        <div className="otherDetails">
           {costForTwo && <p className="costForTwo">• {costForTwo}</p>}
           {areaName && <div className="areaName">• {areaName}</div>}
         </div>
