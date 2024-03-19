@@ -28,13 +28,25 @@ restaurant_router.get(`/list`, async (req, res) => {
   }
 });
 
-restaurant_router.get(`/search`, async (req, res) => {
+restaurant_router.get(`/search/suggest`, async (req, res) => {
   try {
-    const response = await fetch(`${base_url}/search/suggest?lat=${current_lat_long?.lat}&lng=${current_lat_long?.long}&str=${search_text}&trackingId=undefined`, {
-
+    const { lat, long, str: search_text } = req.query;
+    const response = await fetch(`${base_url}/search/suggest?lat=${lat}&lng=${long}&str=${search_text}&trackingId=undefined`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+      }
     });
+    if (!response.ok) {
+      throw new Error('Error while fetching data');
+    }
+    const result = await response?.json();
+    // console.log(result);
+    res.send(result);
   } catch (error) {
-
+    console.error(error);
+    res.status(500).send(error);
   }
 });
 
