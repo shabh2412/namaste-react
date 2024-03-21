@@ -33,6 +33,11 @@ body {
   border-radius: 50%;
 }
 
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
 .nav-items > ul {
   display: flex;
   list-style-type: none;
@@ -305,7 +310,8 @@ button:hover {
   z-index: 100;
   max-height: 250px;
   overflow-y: scroll;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
   padding-bottom: 10px;
   padding-top: 10px;
 }
