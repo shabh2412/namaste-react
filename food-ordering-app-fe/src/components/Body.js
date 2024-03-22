@@ -16,7 +16,7 @@ const Body = () => {
   const fetch_data = async ({ lat, long } = initial_lat_long) => {
     try {
       set_loading(true);
-      const url = `${base_url}/list/v5?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`;
+      const url = `${base_url}/list?lat=${lat}&long=${long}`;
       const res = await fetch(url);
       const json_data = await res?.json();
       console.log(json_data);

@@ -45,7 +45,7 @@ const Search = ({ current_lat_long = initial_lat_long, set_filtered_restaurants 
       //   filteredList = list_of_restaurants?.filter(restaurant => restaurant?.info?.name?.toLowerCase()?.includes(search_text?.toLowerCase()));
       // }
       console.log('searching in server');
-      const res = await fetch(`${base_url}/search/suggest?lat=${current_lat_long?.lat}&lng=${current_lat_long?.long}&str=${search_text}&trackingId=undefined`);
+      const res = await fetch(`${base_url}/search/suggest?lat=${current_lat_long?.lat}&long=${current_lat_long?.long}&str=${search_text}&trackingId=undefined`);
       const json_data = await res?.json();
       console.log(json_data);
       const { data } = json_data;
