@@ -4,7 +4,8 @@ import { initial_lat_long, res_list } from "../utils/mockData";
 import Search from "./Search";
 import { base_url } from "../utils/constants";
 
-const Body = () => {
+// previously: Body & Body.js
+const RestaurantListings = () => {
 
   const [list_of_restaurants, set_list_of_restaurants] = useState([]);
   const [filtered_restaurants, set_filtered_restaurants] = useState([]);
@@ -13,6 +14,13 @@ const Body = () => {
 
   const [loading, set_loading] = useState(false);
 
+  const filter_data_based_on_ratings = () => {
+    const filteredList = list_of_restaurants?.filter(item => {
+      return item?.info?.avgRating >= minimum_rating;
+    });
+    set_filtered_restaurants(filteredList);
+  };
+
   const fetch_data = async ({ lat, long } = initial_lat_long) => {
     try {
       set_loading(true);
@@ -20,14 +28,26 @@ const Body = () => {
       const res = await fetch(url);
       const json_data = await res?.json();
       console.log(json_data);
-      set_list_of_restaurants(json_data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json_data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
-      set_filtered_restaurants(json_data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json_data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []);
+      const element = json_data?.data?.cards?.find((item) => item?.card?.card?.id === "restaurant_grid_listing");
+      console.log({ element });
+      set_list_of_restaurants(
+        element?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
+        json_data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json_data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
+      );
+      set_filtered_restaurants(
+        element?.card?.card?.gridElements?.infoWithStyle?.restaurants ||
+        json_data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json_data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
+      );
     } catch (error) {
       console.log({ error });
     } finally {
       set_loading(false);
     }
   };
+
+  useEffect(() => {
+    filter_data_based_on_ratings();
+  }, [list_of_restaurants]);
 
   const [current_lat_long, set_current_lat_long] = useState(initial_lat_long);
 
@@ -94,12 +114,7 @@ const Body = () => {
             <option value="1">1</option>
           </select>
           <button className="filter-btn"
-            onClick={() => {
-              const filteredList = res_list.filter(item => {
-                return item?.info?.avgRating >= minimum_rating;
-              });
-              set_list_of_restaurants(filteredList);
-            }}
+            onClick={filter_data_based_on_ratings}
           >Apply</button>
         </div>
       </div>
@@ -121,4 +136,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default RestaurantListings;
