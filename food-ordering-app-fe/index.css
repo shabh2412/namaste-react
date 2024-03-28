@@ -49,6 +49,10 @@ body {
   padding: 4px;
 }
 
+.nav-items > ul > li > a {
+  text-decoration: none;
+}
+
 /* .nav-items > ul > li {
   padding: 10px;
   margin: 10px;
