@@ -65,6 +65,36 @@
           }
         }
       }
+    },
+    "/restaurants/menu": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "long",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   }
 }
