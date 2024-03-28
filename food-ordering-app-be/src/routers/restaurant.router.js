@@ -50,4 +50,31 @@ restaurant_router.get(`/search/suggest`, async (req, res) => {
   }
 });
 
+restaurant_router.get(`/menu`, async (req, res) => {
+  try {
+    const { lat, long, restaurantId, } = req.query;
+
+    console.log({ lat, long, restaurantId });
+
+    const response = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${long}&restaurantId=${restaurantId}&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+      }
+    });
+    if (!response.ok) {
+      throw new Error('Error while fetching data');
+    }
+    const result = await response?.json();
+    res.send(result);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+
+
+});
+
 module.exports = { restaurant_router };
