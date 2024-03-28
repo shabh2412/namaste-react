@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "./components/Header";
-import RestaurantListings from "./components/RestaurantListings";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return <div className="app">
     <Header />
-    <RestaurantListings />
+    <Outlet />
   </div>;
 };
 
