@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "https://food-ordering-app-be.onrender.com",
+  "host": "food-ordering-app-be.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
