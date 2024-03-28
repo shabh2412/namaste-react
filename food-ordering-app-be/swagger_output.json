@@ -8,7 +8,7 @@
   "host": "food-ordering-app-be.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/restaurants/list": {
