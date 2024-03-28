@@ -9,7 +9,7 @@ const base_url = process.env.BASE_URL;
 restaurant_router.get(`/list`, async (req, res) => {
   try {
     const { lat, long } = req.query;
-    const response = await fetch(`${base_url}//list/v5?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`, {
+    const response = await fetch(`${base_url}/restaurants/list/v5?lat=${lat}&lng=${long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -31,7 +31,7 @@ restaurant_router.get(`/list`, async (req, res) => {
 restaurant_router.get(`/search/suggest`, async (req, res) => {
   try {
     const { lat, long, str: search_text } = req.query;
-    const response = await fetch(`${base_url}/search/suggest?lat=${lat}&lng=${long}&str=${search_text}&trackingId=undefined`, {
+    const response = await fetch(`${base_url}/restaurants/search/suggest?lat=${lat}&lng=${long}&str=${search_text}&trackingId=undefined`, {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
