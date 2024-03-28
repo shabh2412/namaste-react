@@ -22,14 +22,14 @@ const Search = ({ current_lat_long = initial_lat_long, set_filtered_restaurants 
   const handle_clear = () => {
     clear_result();
     clear_text();
-    set_filtered_restaurants(list_of_restaurants);
+    // set_filtered_restaurants(list_of_restaurants);
   };
 
   const handle_search_text_change = (e) => {
     set_search_text(e?.target?.value);
     if (e?.target?.value === "") {
       clear_result();
-      set_filtered_restaurants(list_of_restaurants);
+      // set_filtered_restaurants(list_of_restaurants);
     }
     else {
       // const filtered_restaurants = list_of_restaurants?.filter(restaurant => restaurant?.info?.name?.toLowerCase()?.includes(search_text?.toLowerCase()));
