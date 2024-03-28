@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import localAssets from "../utils/localAssets";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [is_logged_in, set_is_logged_in] = useState(false);
@@ -21,10 +22,58 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li>
+            <NavLink to={"/"}
+              style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "black",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/about"}
+              style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "black",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              About Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/contact"}
+              style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "black",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              Contact Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/cart"}
+              style={({ isActive, isPending, isTransitioning }) => {
+                return {
+                  fontWeight: isActive ? "bold" : "",
+                  color: isPending ? "red" : "black",
+                  viewTransitionName: isTransitioning ? "slide" : "",
+                };
+              }}
+            >
+              Cart
+            </NavLink>
+          </li>
         </ul>
         <div style={{ width: "80px", display: "flex", justifyContent: "end", alignItems: "center" }}>
           <button style={{
