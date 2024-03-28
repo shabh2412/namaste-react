@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-import { initial_lat_long, res_list } from "../utils/mockData";
+import { initial_lat_long } from "../utils/mockData";
 import Search from "./Search";
 import { base_url } from "../utils/constants";
 
