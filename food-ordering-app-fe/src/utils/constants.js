@@ -1,4 +1,7 @@
-export const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+export const CDN_BASE = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto";
+export const CDN_URL = `${CDN_BASE},w_660/`;
+export const CDN_MENU_ICON = `${CDN_BASE},w_300,h_300,c_fit`;
+export const CDN_ICONS = `${CDN_BASE},w_40,h_40`;
 
 // export const base_url = `https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants`;
 export const base_url = `https://food-ordering-app-be.onrender.com/restaurants`;

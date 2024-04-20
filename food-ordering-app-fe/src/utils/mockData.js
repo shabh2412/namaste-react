@@ -826,3 +826,178 @@ export const initial_lat_long = {
   lat: 12.9351929,
   long: 77.62448069999999,
 };
+
+export const sample_restaurant_meta = {
+  "id": "253735",
+  "name": "McDonald's",
+  "city": "Noida 1",
+  "slugs": {
+    "restaurant": "mcdonalds-up-noida4-sector-61-sector-50",
+    "city": "noida-1"
+  },
+  "uniqueId": "e51e6528-4859-48c8-8fed-e84c17dc2d76",
+  "cloudinaryImageId": "535fc9f9c135f7982317bbb6a64a1ffc",
+  "locality": "Supertech Shopprix Mall",
+  "areaName": "Sector 61",
+  "costForTwo": "40000",
+  "costForTwoMessage": "₹400 for two",
+  "cuisines": [
+    "American"
+  ],
+  "avgRating": 4.4,
+  "feeDetails": {
+    "restaurantId": "253735",
+    "fees": [
+      {
+        "name": "TYPE_DISTANCE",
+        "fee": 3600
+      },
+      {
+        "name": "TYPE_TIME"
+      }
+    ],
+    "totalFee": 3600,
+    "title": "Delivery Charge",
+    "amount": "3600",
+    "icon": "v1648635511/Delivery_fee_new_cjxumu",
+    "message": "<b>2.9 kms</b> | ₹36 Delivery fee will apply"
+  },
+  "parentId": "630",
+  "avgRatingString": "4.4",
+  "totalRatingsString": "10K+ ratings",
+  "sla": {
+    "restaurantId": "253735",
+    "deliveryTime": 34,
+    "minDeliveryTime": 30,
+    "maxDeliveryTime": 35,
+    "lastMileTravel": 2.9,
+    "serviceability": "SERVICEABLE",
+    "stressFactor": 1,
+    "rainMode": "RAIN_MODE_NONE",
+    "longDistance": "LONG_DISTANCE_NOT_LONG_DISTANCE",
+    "zoneId": 2829,
+    "slaString": "30-35 MINS",
+    "lastMileTravelString": "2.9 km",
+    "iconType": "ICON_TYPE_EMPTY"
+  },
+  "availability": {
+    "nextCloseTime": "2024-04-06 23:45:00",
+    "visibility": true,
+    "opened": true,
+    "restaurantClosedMeta": {}
+  },
+  "aggregatedDiscountInfo": {
+    "shortDescriptionList": [
+      {
+        "discountType": "Percentage",
+        "operationType": "RESTAURANT"
+      },
+      {
+        "discountType": "Percentage",
+        "operationType": "RESTAURANT"
+      }
+    ],
+    "descriptionList": [
+      {
+        "meta": "20% off upto ₹125 | Use AMEXMATCHDAY Above ₹549",
+        "discountType": "Percentage",
+        "operationType": "RESTAURANT"
+      },
+      {
+        "meta": "15% off upto ₹150 | Above ₹499",
+        "discountType": "Percentage",
+        "operationType": "RESTAURANT"
+      }
+    ],
+    "visible": true
+  },
+  "badges": {},
+  "slugString": "mcdonalds-up-noida4-sector-61-sector-50",
+  "multiOutlet": true,
+  "isOpen": true,
+  "labels": [
+    {
+      "title": "Timings",
+      "message": "null"
+    },
+    {
+      "title": "Address",
+      "message": "UP Noida 4, Shop No. 230- 231, C-134 B, Super Shopprix Mall, Sector-61,Noida-201301"
+    },
+    {
+      "title": "Cuisines",
+      "message": "American"
+    }
+  ],
+  "logo": "ygzpacvdpquemhj77imr",
+  "totalRatings": 10000,
+  "aggregatedDiscountInfoV2": {
+    "shortDescriptionList": [
+      {
+        "discountType": "Percentage",
+        "operationType": "RESTAURANT"
+      },
+      {
+        "discountType": "Percentage",
+        "operationType": "RESTAURANT"
+      }
+    ],
+    "descriptionList": [
+      {
+        "meta": "20% off upto ₹125 | Use AMEXMATCHDAY Above ₹549",
+        "discountType": "Percentage",
+        "operationType": "RESTAURANT"
+      },
+      {
+        "meta": "15% off upto ₹150 | Above ₹499",
+        "discountType": "Percentage",
+        "operationType": "RESTAURANT"
+      }
+    ],
+    "couponDetailsCta": "View coupon details"
+  },
+  "type": "F",
+  "headerBanner": {
+    "url": "swiggy://webview?is_external=false&webview_url=https://www.swiggy.com/restaurant-info/253735"
+  },
+  "expectationNotifiers": [
+    {
+      "text": "<b>2.9 kms</b> | ₹36 Delivery fee will apply",
+      "icon": {
+        "imageId": "v1648635511/Delivery_fee_new_cjxumu"
+      },
+      "popup": {
+        "cta": {}
+      },
+      "type": "DISTANCE_FEE_NON_FOOD_LM",
+      "enrichedText": "<b>2.9 kms</b> | ₹36 Delivery fee will apply",
+      "halfCardPopup": {
+        "halfCardPopupHeader": {}
+      }
+    }
+  ],
+  "generalPurposeInfoListV2": [
+    {
+      "cta": {
+        "info": {
+          "recordings": {}
+        },
+        "linkCta": {}
+      }
+    }
+  ],
+  "ratingSlab": "RATING_SLAB_5",
+  "orderabilityCommunication": {
+    "title": {},
+    "subTitle": {},
+    "message": {},
+    "customIcon": {}
+  },
+  "hasBestsellerItems": true,
+  "cartOrderabilityNudgeBanner": {
+    "parameters": {},
+    "presentation": {}
+  },
+  "latLong": "28.59747033,77.3648039",
+  "backgroundImageOverlayInfo": {}
+};

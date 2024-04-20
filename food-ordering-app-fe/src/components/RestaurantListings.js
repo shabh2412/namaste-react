@@ -129,6 +129,8 @@ const RestaurantListings = () => {
             filtered_restaurants?.map((restaurant) => <RestaurantCard
               key={`${restaurant?.info?.id}`}
               resData={restaurant?.info}
+              lat={current_lat_long?.lat}
+              long={current_lat_long?.long}
             />)
         }
       </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import localAssets from "../utils/localAssets";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   const [is_logged_in, set_is_logged_in] = useState(false);
@@ -18,59 +18,29 @@ const Header = () => {
   return (
     <div className="header">
       <div className="logo-container">
-        <img src={localAssets?.logo_image} alt="app-logo" className="logo" />
+        <Link to={"/"}>
+          <img src={localAssets?.logo_image} alt="app-logo" className="logo" />
+        </Link>
       </div>
       <div className="nav-items">
         <ul>
           <li>
-            <NavLink to={"/"}
-              style={({ isActive, isPending, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  color: isPending ? "red" : "black",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
-            >
+            <NavLink to={"/"}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to={"/about"}
-              style={({ isActive, isPending, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  color: isPending ? "red" : "black",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
-            >
+            <NavLink to={"/about"}>
               About Us
             </NavLink>
           </li>
           <li>
-            <NavLink to={"/contact"}
-              style={({ isActive, isPending, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  color: isPending ? "red" : "black",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
-            >
+            <NavLink to={"/contact"}>
               Contact Us
             </NavLink>
           </li>
           <li>
-            <NavLink to={"/cart"}
-              style={({ isActive, isPending, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  color: isPending ? "red" : "black",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
-            >
+            <NavLink to={"/cart"}>
               Cart
             </NavLink>
           </li>

@@ -5,6 +5,7 @@ import ContactPage from "./src/components/ContactPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFoundPage from "./src/components/NotFound";
 import RestaurantListings from "./src/components/RestaurantListings";
+import RestaurantMenu from "./src/components/RestaurantMenu";
 
 const rootContainer = document.getElementById("root");
 const root = createRoot(rootContainer);
@@ -26,6 +27,10 @@ const routerConfiguration = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/restaurants/:restaurant_id",
+        element: <RestaurantMenu />
       },
     ]
   },

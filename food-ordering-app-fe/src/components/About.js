@@ -1,6 +1,7 @@
 import React from 'react';
 
 const About = () => {
+  console.log("about");
   return (
     <div className="about-container" style={styles.container}>
       <h1 style={styles.header}>Discover the Joy of Eating with Dineatz</h1>
