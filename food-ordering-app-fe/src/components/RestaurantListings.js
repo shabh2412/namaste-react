@@ -1,10 +1,16 @@
+import useOnlineStatus from "../utils/hooks/useOnlineStatus";
 import useRestaurantListing from "../utils/hooks/useRestaurantListing";
+import Offline from "./Offline";
 import RestaurantCard from "./RestaurantCard";
 import Search from "./Search";
 // previously: Body & Body.js
 const RestaurantListings = () => {
 
   const { current_lat_long, filtered_restaurants, list_of_restaurants, set_filtered_restaurants, minimum_rating, set_minimum_rating, filter_data_based_on_ratings, loading } = useRestaurantListing();
+
+  const is_online = useOnlineStatus();
+
+  if (!is_online) return <Offline />;
 
   return (
     <div className="body">
