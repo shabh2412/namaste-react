@@ -1,14 +1,19 @@
 import { createRoot } from "react-dom/client";
 import App from "./src/App";
-import About from "./src/components/About";
+// import About from "./src/components/About";
 import ContactPage from "./src/components/ContactPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import NotFoundPage from "./src/components/NotFound";
-import RestaurantListings from "./src/components/RestaurantListings";
+// import RestaurantListings from "./src/components/RestaurantListings";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+import { lazy } from "react";
+import { Suspense } from "react";
 
 const rootContainer = document.getElementById("root");
 const root = createRoot(rootContainer);
+
+const RestaurantListings = lazy(() => import("./src/components/RestaurantListings"));
+const About = lazy(() => import("./src/components/About"));
 
 const routerConfiguration = createBrowserRouter([
   {
@@ -18,11 +23,15 @@ const routerConfiguration = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <RestaurantListings />,
+        element: <Suspense fallback={<h1>Loading...</h1>} >
+          <RestaurantListings />,
+        </Suspense>
       },
       {
         path: "/about",
-        element: <About />,
+        element: <Suspense fallback={<h1>Loading...</h1>}>
+          <About />,
+        </Suspense>
       },
       {
         path: "/contact",
