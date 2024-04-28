@@ -7,7 +7,10 @@ const NotFoundPage = () => {
     <div className="not-found-container" style={styles.container}>
       <h1 style={styles.header}>Oops!</h1>
       <p style={styles.text}>We can't seem to find the page you're looking for.</p>
-      <h2 style={styles.errorCode}>Error code: {routerError?.status} - {routerError?.statusText}</h2>
+      {
+        routerError?.status && routerError?.statusText &&
+        <h2 style={styles.errorCode}>Error code: {routerError?.status} - {routerError?.statusText}</h2>
+      }
       <Link to="/" style={styles.homeLink}>Go back home</Link>
     </div>
   );
