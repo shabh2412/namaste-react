@@ -488,7 +488,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   margin: 32px auto;
-  height: 144px;
+  height: 100%;
 }
 
 .dish-name {
