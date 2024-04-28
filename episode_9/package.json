@@ -1,0 +1,24 @@
+{
+  "name": "episode_4",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.3"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
+}
