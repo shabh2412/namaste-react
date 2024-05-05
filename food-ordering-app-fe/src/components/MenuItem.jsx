@@ -72,7 +72,7 @@ const MenuItem = ({ menu_item_data = {} }) => {
           </div>
         }
         <Tooltip title={description}>
-          <div className="meal-description overflow-hidden text-ellipsis text-nowrap">
+          <div className="meal-description overflow-hidden text-ellipsis text-nowrap md:text-wrap">
             {description}
           </div>
         </Tooltip>
@@ -80,7 +80,7 @@ const MenuItem = ({ menu_item_data = {} }) => {
 
       {/* div for image and add button. */}
       <div className="menu-meal-img-container col-span-1 relative" >
-        <img src={`${CDN_MENU_ICON}/${imageId}`} alt={name} className="w-full object-cover h-[180px]" />
+        <img src={`${CDN_MENU_ICON}/${imageId}`} alt={name} className="w-full object-cover h-[120px] md:h-[180px]" />
         <div className="w-full bg-[rgba(45,45,45,0.5)] flex absolute bottom-0 justify-center">
           <IconButton size="small" onClick={add_to_cart} className="">
             <AddShoppingCartIcon className="bg-orange-400 text-white p-1 !h-8 !w-8 rounded" />
@@ -88,7 +88,7 @@ const MenuItem = ({ menu_item_data = {} }) => {
         </div>
       </div>
     </div>
-    <div className="bottom-divider"></div>
+    {/* <div className="bottom-divider"></div> */}
   </>;
 };
 
