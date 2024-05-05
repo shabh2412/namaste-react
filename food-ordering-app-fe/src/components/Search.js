@@ -118,7 +118,7 @@ const Search = ({ current_lat_long = initial_lat_long, set_filtered_restaurants 
       </div>
       <div className="relative">
         {
-          search_loading ? <div className="search-result-container absolute top-0 max-h-80 w-[30rem] overflow-hidden p-0 bg-white">
+          search_loading ? <div className="search-result-container absolute top-0 max-h-80 w-[30rem] overflow-hidden p-0 bg-white z-20">
             {
               (new Array(3))?.fill(0)?.map((item, idx) => <div key={`Shimmer-${idx}-loading`}
                 className='my-2'
@@ -133,7 +133,7 @@ const Search = ({ current_lat_long = initial_lat_long, set_filtered_restaurants 
           </div>
             :
             search_result && search_result?.length > 0 &&
-            <div className='search-result-container absolute top-0 max-h-80 overflow-scroll bg-gray-100 w-full p-2 rounded-b shadow-lg'>
+            <div className='search-result-container absolute top-0 max-h-80 overflow-scroll bg-gray-100 w-full p-2 rounded-b shadow-lg z-20'>
               {
                 search_result?.map((result, idx) =>
                   <div key={`search-result-${idx}-${result?.cloudinaryId}`} className='search-result-individual-box flex my-4 p-2 justify-start items-center gap-3 bg-white rounded hover:bg-gray-200 cursor-pointer' style={{
