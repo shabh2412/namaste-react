@@ -13,12 +13,12 @@ const RestaurantCard = (props) => {
 
   return (
     <Link to={`/restaurants/${resData?.id}?lat=${lat}&long=${long}&res_img=${cloudinaryImageId}`} >
-      <div className="w-[160px] bg-gray-50 hover:bg-gray-200 rounded-lg" id={resData?.id} style={{
+      <div className="w-[160px] md:w-[180px] lg:w-[200px] bg-gray-50 hover:bg-gray-200 rounded-lg" id={resData?.id} style={{
         // backgroundColor: "var(--light-gray)"
       }}>
         <div className="res-logo-container mb-2">
           <img
-            className="w-[180px] h-[200px] object-cover rounded-t-lg"
+            className="w-[160px] h-[200px] md:w-[180px] lg:w-[200px] object-cover rounded-t-lg"
             src={`${CDN_URL}${cloudinaryImageId}`} alt="res-logo"
           />
         </div>

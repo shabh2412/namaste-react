@@ -46,7 +46,7 @@ const RestaurantListings = () => {
         </div>
       </div>
       {/* restaurant cards container */}
-      <div className="my-2 grid grid-cols-2 sm:grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 justify-center items-center">
+      <div className="my-2 grid grid-cols-2 sm:grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-8 justify-center items-center">
         {/* Restaurant Cards */}
         {/* <RestaurantCard resData={resObj} /> */}
         {/* Below is an example of conditional rendering */}
