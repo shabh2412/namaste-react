@@ -8,7 +8,7 @@ const DeliveryMeta = ({ expectationNotifier = sample_restaurant_meta?.expectatio
   return (
     <div style={{ margin: "8px 16px", display: "flex", justifyContent: "start", alignItems: "center", gap: "8px" }} >
       <div>
-        <img src={`${CDN_URL}/${icon?.imageId}`} className='notifier-img' />
+        <img src={`${CDN_URL}/${icon?.imageId}`} className='w-8' />
       </div>
       <div dangerouslySetInnerHTML={{ __html: enrichedText || text }} className='notifier-text' >
       </div>
