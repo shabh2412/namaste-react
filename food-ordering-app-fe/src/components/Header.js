@@ -20,7 +20,7 @@ const Header = () => {
   const is_online = useOnlineStatus();
 
   return (
-    <div className="flex p-2 gap-4 shadow-sm">
+    <div className="flex p-2 gap-4 shadow-sm sticky top-0 bg-white z-10">
       <div className="w-20">
         <Link to={"/"}>
           <img src={localAssets?.logo_image} alt="app-logo" className="rounded-full" />
