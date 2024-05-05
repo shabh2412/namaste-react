@@ -98,7 +98,7 @@ const Search = ({ current_lat_long = initial_lat_long, set_filtered_restaurants 
             endAdornment: <InputAdornment position='end'>
               <>
                 {
-                  search_result?.length > 0 &&
+                  search_text?.length > 0 &&
                   <IconButton onClick={handle_clear}>
                     <Close />
                   </IconButton>
