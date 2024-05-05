@@ -12,7 +12,7 @@ const RestaurantCard = (props) => {
   const { name, cloudinaryImageId, costForTwo, cuisines, sla, avgRating, areaName } = resData;
 
   return (
-    <Link to={`/restaurants/${resData?.id}?lat=${lat}&long=${long}`} >
+    <Link to={`/restaurants/${resData?.id}?lat=${lat}&long=${long}&res_img=${cloudinaryImageId}`} >
       <div className="w-[180px] bg-gray-50 hover:bg-gray-200 rounded-lg" id={resData?.id} style={{
         // backgroundColor: "var(--light-gray)"
       }}>
