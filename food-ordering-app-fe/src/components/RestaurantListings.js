@@ -1,3 +1,4 @@
+import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import useOnlineStatus from "../utils/hooks/useOnlineStatus";
 import useRestaurantListing from "../utils/hooks/useRestaurantListing";
 import Offline from "./Offline";
@@ -15,40 +16,37 @@ const RestaurantListings = () => {
   return (
     <div className="w-full p-4">
       <div className="filter">
-        {/* <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredList = res_list.filter(item => {
-              return item?.info?.avgRating >= 4;
-            });
-            set_list_of_restaurants(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button> */}
         <Search
           current_lat_long={current_lat_long}
           set_filtered_restaurants={set_filtered_restaurants}
           list_of_restaurants={list_of_restaurants}
         />
-        <div className="flex gap-1 items-center">
-          <label htmlFor="minRating">Minimum Rating</label>
-          <select name="minRating" id="minRating" value={minimum_rating} onChange={(e) => {
-            set_minimum_rating(+(e?.target?.value));
-          }}>
-            <option value="5">5</option>
-            <option value="4">4</option>
-            <option value="3">3</option>
-            <option value="2">2</option>
-            <option value="1">1</option>
-          </select>
-          <button className="filter-btn"
+        <div className="grid grid-cols-5 my-4 gap-2 md:grid-cols-12">
+          <FormControl fullWidth className="col-span-4 md:col-span-2">
+            <InputLabel id="min-rating-label">Minimum Rating</InputLabel>
+            <Select fullWidth
+              labelId="min-rating-label"
+              id="min-rating"
+              value={minimum_rating}
+              label="Minimum Rating"
+              onChange={(e) => {
+                set_minimum_rating(+(e?.target?.value));
+              }}
+            >
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+            </Select>
+          </FormControl>
+          <Button variant="outlined" className="filter-btn"
             onClick={filter_data_based_on_ratings}
-          >Apply</button>
+          >Apply</Button>
         </div>
       </div>
       {/* restaurant cards container */}
-      <div className="my-2 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+      <div className="my-2 grid grid-cols-2 sm:grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 justify-center items-center">
         {/* Restaurant Cards */}
         {/* <RestaurantCard resData={resObj} /> */}
         {/* Below is an example of conditional rendering */}
