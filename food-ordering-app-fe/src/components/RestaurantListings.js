@@ -13,7 +13,7 @@ const RestaurantListings = () => {
   if (!is_online) return <Offline />;
 
   return (
-    <div className="body">
+    <div className="w-full p-4">
       <div className="filter">
         {/* <button
           className="filter-btn"
@@ -47,7 +47,8 @@ const RestaurantListings = () => {
           >Apply</button>
         </div>
       </div>
-      <div className="res-container">
+      {/* restaurant cards container */}
+      <div className="my-2 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
         {/* Restaurant Cards */}
         {/* <RestaurantCard resData={resObj} /> */}
         {/* Below is an example of conditional rendering */}
