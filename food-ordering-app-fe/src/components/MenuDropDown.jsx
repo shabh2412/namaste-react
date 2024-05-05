@@ -10,15 +10,12 @@ export const MenuDropDown = ({ title = "", itemCards = [] }) => {
   };
 
   return <>
-    <div style={{ width: "100%" }}>
-      <div style={{
-        // margin: "24px 16px 16px",
-        width: "100%"
-      }}
-        className="restaurant-menu-dropdown"
+    <div className="w-full">
+      <div
+        className="restaurant-menu-dropdown w-full"
       >
-        <div style={{ width: "100%" }}>
-          <div className="restaurant-menu-dropdown-button" onClick={toggle} >
+        <div className="w-full">
+          <div className="restaurant-menu-dropdown-button w-full flex justify-between bg-white p-4 rounded-t cursor-pointer mt-4 hover:bg-gray-200" onClick={toggle} >
             <div>
               <h3>
                 {
@@ -36,11 +33,14 @@ export const MenuDropDown = ({ title = "", itemCards = [] }) => {
           </div>
         </div>
         {
-          <div style={{
-            height: open ? "100%" : "0%",
-            visibility: open ? "visible" : "hidden",
-            display: open ? "block" : "none",
-          }} >
+          <div
+            className="bg-white p-4 rounded-b"
+            style={{
+              height: open ? "100%" : "0%",
+              visibility: open ? "visible" : "hidden",
+              display: open ? "block" : "none",
+            }}
+          >
             {
               itemCards?.map(item => <MenuItem key={`${title}-${item?.card?.info?.id}`} menu_item_data={item?.card?.info} />)
             }

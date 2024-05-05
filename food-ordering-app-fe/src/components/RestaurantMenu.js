@@ -6,6 +6,7 @@ import MenuDropDown from "./MenuDropDown";
 import RestaurantMeta from "./RestaurantMeta";
 import useRestaurantMenuData from "../utils/hooks/useRestaurantMenuData";
 import NotFoundPage from "./NotFound";
+import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 const RestaurantMenu = () => {
 
   const { restaurant_id } = useParams();
@@ -71,16 +72,9 @@ const RestaurantMenu = () => {
               >
                 <RestaurantMeta restaurant_meta={restaurant_meta} />
                 {/* Veg/NonVeg Filter */}
-                <div className="flex gap-1 items-center justify-start my-1 mx-1" >
-                  <div className="flex" >
-                    <div>Veg Only</div>
-                    <input name="veg" type="checkbox" checked={veg_nonveg_filter?.veg} onChange={toggle_veg_nonveg} />
-                  </div>
-                  {/* <div className="flex" >
-            <div>Non Veg</div>
-            <input type="checkbox" checked={veg_nonveg_filter?.nonveg} />
-          </div> */}
-                </div>
+                <FormGroup className="p-1" >
+                  <FormControlLabel control={<Checkbox name="veg" checked={veg_nonveg_filter?.veg} onChange={toggle_veg_nonveg} />} label="Veg Only" />
+                </FormGroup>
                 {
                   restaurant_menu_copy?.map(menu => <MenuDropDown key={`${menu?.card?.card?.title}`} title={menu?.card?.card?.title} itemCards={menu?.card?.card?.itemCards} />)
                 }

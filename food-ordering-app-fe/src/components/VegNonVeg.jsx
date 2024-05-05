@@ -8,14 +8,14 @@ const VegNonVeg = ({ isVeg }) => {
       display: 'flex',
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: "8px",
-      border: "1px solid",
-      padding: "4px",
-      margin: "4px"
+      borderRadius: "2px",
+      // padding: "4px",
     }}
-      className={`is-${isVeg ? "veg" : "nonveg"}`}
+      className={`${isVeg ? "border-green-500" : "border-red-500"} border p-2`}
     >
-      <div style={{ width: "8px", height: "8px", borderRadius: "50%" }} ></div>
+      <div
+        className={`${isVeg ? "bg-green-500" : "bg-red-500"} p-1`}
+        style={{ width: "8px", height: "8px", borderRadius: "50%" }} ></div>
     </div>
   );
 };

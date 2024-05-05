@@ -2,6 +2,9 @@ import VegNonVeg from "./VegNonVeg";
 import DiscountIcon from '@mui/icons-material/Discount';
 import StarIcon from '@mui/icons-material/Star';
 import { CDN_MENU_ICON } from "../utils/constants";
+import { Button, IconButton, Tooltip } from "@mui/material";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+
 
 const MenuItem = ({ menu_item_data = {} }) => {
 
@@ -24,14 +27,14 @@ const MenuItem = ({ menu_item_data = {} }) => {
   };
 
   return <>
-    <div className="menu-item-card">
+    <div className="menu-item-card grid grid-cols-3 bg-slate-50 my-2 p-2 hover:bg-gray-100 md:p-4">
       {/* div for text information */}
-      <div>
+      <div className="w-full col-span-2">
         <div style={{ display: "flex", gap: "4px" }}>
           <VegNonVeg isVeg={isVeg} />
         </div>
         {/* dish name */}
-        <div className="dish-name">{name}</div>
+        <div className="dish-name text-lg font-bold">{name}</div>
         <div className="flex" style={{ gap: "4px" }} >
           <div className="dish-price">
             ₹{(price || defaultPrice || 0) / 100}
@@ -68,17 +71,21 @@ const MenuItem = ({ menu_item_data = {} }) => {
             </div>
           </div>
         }
-        <div style={{ display: "flex", alignItems: "end", cursor: "pointer" }} >
-          <div className="meal-description">
+        <Tooltip title={description}>
+          <div className="meal-description overflow-hidden text-ellipsis text-nowrap">
             {description}
           </div>
-        </div>
+        </Tooltip>
       </div>
 
       {/* div for image and add button. */}
-      <div className="menu-meal-img-container" >
-        <img src={`${CDN_MENU_ICON}/${imageId}`} alt={name} />
-        <button className="add-to-cart-button" onClick={add_to_cart} >Add</button>
+      <div className="menu-meal-img-container col-span-1 relative" >
+        <img src={`${CDN_MENU_ICON}/${imageId}`} alt={name} className="w-full object-cover h-[180px]" />
+        <div className="w-full bg-[rgba(45,45,45,0.5)] flex absolute bottom-0 justify-center">
+          <IconButton size="small" onClick={add_to_cart} className="">
+            <AddShoppingCartIcon className="bg-orange-400 text-white p-1 !h-8 !w-8 rounded" />
+          </IconButton>
+        </div>
       </div>
     </div>
     <div className="bottom-divider"></div>
