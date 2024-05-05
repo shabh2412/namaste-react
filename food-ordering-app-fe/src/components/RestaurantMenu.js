@@ -65,16 +65,10 @@ const RestaurantMenu = () => {
           menu_loading ? <>
             Loading...
           </> :
-            <div style={{
-              display: "flex",
-              flexDirection: "column",
-            }}>
-              <div style={{
-                maxWidth: "800px",
-                minHeight: "600px",
-                margin: "20px auto 0",
-                width: "100%"
-              }}>
+            <div className="flex flex-col bg-gray-100">
+              <div
+                className="w-full px-4 mt-5 max-w-[400px] mx-auto md:max-w-[800px]"
+              >
                 <RestaurantMeta restaurant_meta={restaurant_meta} />
                 {/* Veg/NonVeg Filter */}
                 <div className="flex gap-1 items-center justify-start my-1 mx-1" >
